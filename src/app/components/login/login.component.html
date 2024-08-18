@@ -1,0 +1,43 @@
+<body>
+  <div class="wrapper">
+    <form [formGroup]="form">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" placeholder="Username" required formControlName="userName">
+        <i class='bx bxs-user-circle'></i>
+        @if(form.get('userName')?.invalid && form.get('userName')?.touched ){
+        <div class="warning-message">
+          Please enter a valid email.
+        </div>
+        }
+      </div>
+
+      <div class="input-box">
+        <input type="password" placeholder="Password" required formControlName="password">
+        <!-- <i style="color:green !important;" class="bi bi-eye-slash custom-eye-icon"></i> -->
+
+
+        @if(form.get('password')?.invalid && form.get('password')?.touched){
+
+        <div class="warning-message">
+          Password must be at least {{validationNumber}} characters long.
+        </div>
+        }
+      </div>
+
+      <div class="remember-forgot">
+        <div class="inputCheck">
+          <input type="checkbox">
+          <label>Remember me</label>
+        </div>
+        <a href="#"> Forgot password?</a>
+      </div>
+      <br>
+
+      <button type="submit" class="btn" style="color:rgb(255, 255, 255);" (click)="onLogin()"
+        [disabled]="form.invalid">Login</button>
+
+
+    </form>
+  </div>
+</body>
